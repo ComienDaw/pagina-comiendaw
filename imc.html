@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>ComienDaw – IMC</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<span class="image featured"><img src="images/logo_comiendawsintexto80x76.png" alt="" /></span>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Inicio</a></li>
+							<li>
+								<a href="#" class="icon solid fa-angle-down">Layouts</a>
+								<ul>
+									<li><a href="imc.html">IMC</a></li>
+									<li><a href="contact.html">Contactar</a></li>
+									<li><a href="elements.html">Platos favoritos</a></li>
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option One</a></li>
+											<li><a href="#">Option Two</a></li>
+											<li><a href="#">Option Three</a></li>
+											<li><a href="#">Option Four</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<section id="main" class="container">
+					<header>
+						<h2>Índice de Masa Corporal</h2>
+						<p>Encuentra el equilibrio.</p>
+					</header>
+					<div class="box">
+						<span class="image featured"><img src="images/pic07.png" alt="" /></span>
+						<h3>¿Qué es?</h3>
+						<p>El índice de masa corporal (IMC) es un número que se calcula con base en el peso y la estatura de la persona. Para la mayoría de las personas, el IMC es un indicador confiable de la gordura y se usa para identificar las categorías de peso que pueden llevar a problemas de salud.</p>
+						<div class="row">
+							<div class="row-6 row-12-mobilep">
+								<h3>¿Cómo se utiliza el IMC?</h3>
+								<p>El índice de masa corporal se utiliza para evaluar si el peso de una persona es apropiado para su altura, es decir, si tiene o no un peso saludable. Existen cuatro categorías principales a las que una persona puede pertenecer:
+
+
+<li>
+    Por debajo de peso apropiado
+<li>
+    Peso normal
+<li>
+    Sobrepeso
+<li>
+    Obeso
+
+</p>
+							</div>
+							<div class="row-6 row-12-mobilep">
+								<h3>Calculadora de IMC:</h3>
+
+
+<!-- Calculadora IMC -->
+
+   <form id="imc-form">
+  <label for="gender-select">Sexo:</label>
+  <select id="gender-select">
+    <option value="male">Hombre</option>
+    <option value="female">Mujer</option>
+  </select><br>
+  <label for="age-input">Edad:</label>
+  <input type="number" id="age-input" required>
+  <label for="weight-input">Peso (kg):</label>
+  <input type="number" id="weight-input" required>
+  <label for="height-input">Altura (cm):</label>
+  <input type="number" id="height-input" required><br><br>
+  <button type="submit" class="custom-button">Calcular IMC</button>
+</form>
+<div id="imc-output">
+  <div id="imc-bar"></div>
+  <div id="imc-result"></div>
+</div>
+<script>
+  const imcForm = document.getElementById('imc-form');
+  const genderSelect = document.getElementById('gender-select');
+  const ageInput = document.getElementById('age-input');
+  const weightInput = document.getElementById('weight-input');
+  const heightInput = document.getElementById('height-input');
+  const imcBar = document.getElementById('imc-bar');
+  const imcResult = document.getElementById('imc-result');
+
+  imcForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const gender = genderSelect.value;
+    const age = parseInt(ageInput.value);
+    const weight = parseFloat(weightInput.value);
+    const height = parseFloat(heightInput.value) / 100;
+
+    const bmi = weight / (height * height);
+    const bmiRounded = bmi.toFixed(1);
+
+    let bmiCategory;
+    let bmiColor;
+    if (bmi < 18.5) {
+      bmiCategory = 'bajo peso';
+      bmiColor = '#ffc107'; // amarillo
+    } else if (bmi < 25) {
+      bmiCategory = 'peso normal';
+      bmiColor = '#28a745'; // verde
+    } else if (bmi < 30) {
+      bmiCategory = 'sobrepeso';
+      bmiColor = '#fd7e14'; // naranja
+    } else {
+      bmiCategory = 'obesidad';
+      bmiColor = '#dc3545'; // rojo
+    }
+
+    let genderText;
+
+    if (gender === 'male') {
+      genderText = 'Hombre';
+    } else {
+      genderText = 'Mujer';
+    }
+
+    const outputText = `${genderText}, ${age} años, ${bmiRounded} de IMC (${bmiCategory})`;
+    imcResult.textContent = outputText;
+
+    imcBar.style.width = `${bmi}%`;
+    imcBar.style.backgroundColor = bmiColor;
+  });
+</script>
+
+
+
+			<!-- Footer -->
+			<!--	<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: ComienDaw</li>
+					</ul>
+				</footer> -->
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>ComienDaw – Platos favoritos</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+
+
+
+
+			<!-- Header -->
+				<header id="header">
+					<span class="image featured"><img src="images/logo_comiendawsintexto80x76.png" alt="" /></span>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Inicio</a></li>
+							<li>
+								<a href="#" class="icon solid fa-angle-down">Layouts</a>
+								<ul>
+									<li><a href="imc.html">IMC</a></li>
+									<li><a href="contact.html">Contactar</a></li>
+									<li><a href="elements.html">Platos favoritos</a></li>
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option One</a></li>
+											<li><a href="#">Option Two</a></li>
+											<li><a href="#">Option Three</a></li>
+											<li><a href="#">Option Four</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+
+<section id="main" class="container">
+					<header>
+						<h2>Platos favoritos</h2>
+						<p>Añade tus platos favoritos.</p>
+					</header>
+					<div class="box">
+						<span class="image featured"><img src="images/homer-babeando.gif" alt="" /></span>
+
+				<h3>Añade a la tabla tus platos favoritos, donde podrás editar y borrar cuando quieras.</h3>
+    <form>
+      <fieldset>
+        <legend><b><font color='black'>Desayuno</b></legend>
+        <label for="desayuno"><b><font color='blue'>Introduce tu desayuno:</font></b></label>
+        <input type="text" id="desayuno" name="desayuno">
+        <input type="submit" value="Guardar" onclick="guardarComida('desayuno')">
+      </fieldset><br>
+      <fieldset>
+        <legend><b><font color='black'>Comida</b></legend>
+        <label for="comida"><b><font color='blue'>Introduce tu comida:</font></b></label>
+        <input type="text" id="comida" name="comida">
+        <input type="submit" value="Guardar" onclick="guardarComida('comida')">
+      </fieldset><br>
+      <fieldset>
+        <legend><b><font color='black'>Cena</b></legend>
+        <label for="cena"><b><font color='blue'>Introduce tu cena:</b></label>
+        <input type="text" id="cena" name="cena">
+        <input type="submit" value="Guardar" onclick="guardarComida('cena')">
+      </fieldset><br>
+    </form>
+    <h2>Comidas guardadas</h2>
+    <div id="tablaComidas"></div>
+    <script>
+      // Función para guardar una comida en el localStorage
+      function guardarComida(categoria) {
+        const comida = document.getElementById(categoria).value;
+        if (comida) {
+          let comidas = JSON.parse(localStorage.getItem(categoria)) || [];
+          comidas.push(comida);
+          localStorage.setItem(categoria, JSON.stringify(comidas));
+          document.getElementById(categoria).value = '';
+          mostrarComidas();
+        }
+      }
+
+      // Función para mostrar las comidas guardadas en una tabla
+      function mostrarComidas() {
+        const desayuno = JSON.parse(localStorage.getItem('desayuno')) || [];
+        const comida = JSON.parse(localStorage.getItem('comida')) || [];
+        const cena = JSON.parse(localStorage.getItem('cena')) || [];
+
+        let tablaHtml = '<table><tr><th>Desayuno</th><th>Comida</th><th>Cena</th><th></th><th></th></tr>';
+        for (let i = 0; i < Math.max(desayuno.length, comida.length, cena.length); i++) {
+          const desayunoHtml = i < desayuno.length        ? `<td>${desayuno[i]}</td>` : '<td></td>';
+      const comidaHtml = i < comida.length
+        ? `<td>${comida[i]}</td>` : '<td></td>';
+      const cenaHtml = i < cena.length
+        ? `<td>${cena[i]}</td>` : '<td></td>';
+      const editarHtml = i < desayuno.length || i < comida.length || i < cena.length
+        ? `<td><button onclick="editarComida(${i})">Editar</button></td>` : '<td></td>';
+      const borrarHtml = i < desayuno.length || i < comida.length || i < cena.length
+        ? `<td><button onclick="borrarComida(${i})">Borrar</button></td>` : '<td></td>';
+      tablaHtml += `<tr>${desayunoHtml}${comidaHtml}${cenaHtml}${editarHtml}${borrarHtml}</tr>`;
+    }
+    tablaHtml += '</table>';
+    document.getElementById('tablaComidas').innerHTML = tablaHtml;
+  }
+
+  // Función para editar una comida en el localStorage
+  function editarComida(index) {
+    const desayuno = JSON.parse(localStorage.getItem('desayuno')) || [];
+    const comida = JSON.parse(localStorage.getItem('comida')) || [];
+    const cena = JSON.parse(localStorage.getItem('cena')) || [];
+
+    const nuevaComida = prompt('Introduce la nueva comida:');
+    if (nuevaComida) {
+      if (index < desayuno.length) {
+        desayuno[index] = nuevaComida;
+        localStorage.setItem('desayuno', JSON.stringify(desayuno));
+      } else if (index < desayuno.length + comida.length) {
+        comida[index - desayuno.length] = nuevaComida;
+        localStorage.setItem('comida', JSON.stringify(comida));
+      } else {
+        cena[index - desayuno.length - comida.length] = nuevaComida;
+        localStorage.setItem('cena', JSON.stringify(cena));
+      }
+      mostrarComidas();
+    }
+  }
+
+  // Función para borrar una comida del localStorage
+  function borrarComida(index) {
+    const desayuno = JSON.parse(localStorage.getItem('desayuno')) || [];
+    const comida = JSON.parse(localStorage.getItem('comida')) || [];
+    const cena = JSON.parse(localStorage.getItem('cena')) || [];
+
+    if (index < desayuno.length) {
+      desayuno.splice(index, 1);
+      localStorage.setItem('desayuno', JSON.stringify(desayuno));
+    } else if (index < desayuno.length + comida.length) {
+      comida.splice(index - desayuno.length, 1);
+      localStorage.setItem('comida', JSON.stringify(comida));
+    } else {
+      cena.splice(index - desayuno.length - comida.length, 1);
+      localStorage.setItem('cena', JSON.stringify(cena));
+    }
+    mostrarComidas();
+  }
+
+  mostrarComidas(); // Mostrar las comidas guardadas al cargar la página
+</script>
+
+<a href="/download/copiaindex.txt" download>Descargar archivo</a>
+
+
+
+
+
+</body>
+</html>
+
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: ComienDaw</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

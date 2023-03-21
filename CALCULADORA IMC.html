@@ -1,0 +1,109 @@
+<!DOC<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Calculadora de IMC</title>
+    <style>
+      body {
+        background-color: #D1E8F7;
+        font-family: 'Trebuchet MS', sans-serif;
+      }
+      h1 {
+        text-align: center;
+      }
+      form {
+        margin: 0 auto;
+        max-width: 400px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+      }
+      label, input, select {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+      input, select {
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+      }
+      button {
+        display: block;
+        margin: 20px auto 0;
+        padding: 10px;
+        font-size: 18px;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+        border: none;
+      }
+      #imc-output {
+        margin-top: 20px;
+        font-size: 24px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculadora de IMC</h1>
+    <form id="imc-form">
+      <label for="gender-select">Sexo:</label>
+      <select id="gender-select">
+        <option value="male">Hombre</option>
+        <option value="female">Mujer</option>
+      </select>
+      <label for="age-input">Edad:</label>
+      <input type="number" id="age-input" required>
+      <label for="weight-input">Peso (kg):</label>
+      <input type="number" id="weight-input" required>
+      <label for="height-input">Altura (cm):</label>
+      <input type="number" id="height-input" required>
+      <button type="submit">Calcular IMC</button>
+    </form>
+    <div id="imc-output"></div>
+    <script>
+      const imcForm = document.getElementById('imc-form');
+      const genderSelect = document.getElementById('gender-select');
+      const ageInput = document.getElementById('age-input');
+      const weightInput = document.getElementById('weight-input');
+      const heightInput = document.getElementById('height-input');
+      const imcOutput = document.getElementById('imc-output');
+
+      imcForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const gender = genderSelect.value;
+        const age = parseInt(ageInput.value);
+        const weight = parseFloat(weightInput.value);
+        const height = parseFloat(heightInput.value) / 100;
+
+        const bmi = weight / (height * height);
+        const bmiRounded = bmi.toFixed(1);
+
+        let bmiCategory;
+        if (bmi < 18.5) {
+          bmiCategory = 'bajo peso';
+        } else if (bmi < 25) {
+          bmiCategory = 'peso normal';
+        } else if (bmi < 30) {
+          bmiCategory = 'sobrepeso';
+        } else {
+          bmiCategory = 'obesidad';
+        }
+
+        let genderText;
+
+        if (gender === 'male') {
+          genderText = 'Hombre';
+        } else {
+          genderText = 'Mujer';
+        }
+
+        const outputText = `${genderText}, ${age} años, ${bmiRounded} de IMC (${bmiCategory})`;
+        imcOutput.textContent = outputText;
+      });
+    </script>
+  </body>
+</html>

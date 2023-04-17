@@ -2868,10 +2868,10 @@
 
 		/* Esto hará, que cuando el usuario mantenga el clic, el botón se vuelva de colores */
 		
-		/*	.button.primary:focus {
+			.button.primary:focus {
 		background-color: #ff0000; /* Color rojo al hacer foco en el botón */
 		}
-		*/
+		
 			.button.primary:focus:hover {
 		background-color: #00ff00; /* Color verde al hacer foco y pasar el ratón por encima del botón */
 		}

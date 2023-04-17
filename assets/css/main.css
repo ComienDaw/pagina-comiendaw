@@ -2854,6 +2854,8 @@
 			
 			background-color: #e89980; 
 			color: #ffffff !important;
+		transition: transform 0.2s ease-in-out; /* Transición suave de la propiedad transform */
+
 		}
 
 			input[type="submit"].primary:hover,
@@ -2861,6 +2863,8 @@
 			input[type="button"].primary:hover,
 			.button.primary:hover {
 				background-color: #ecaa96;
+		transform: translate(2px, 2px); /* Movimiento del botón hacia la derecha y hacia abajo */
+		
 				 
 
 			}

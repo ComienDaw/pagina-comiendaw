@@ -1,13 +1,13 @@
 <?php  
 
 // Llamando a los campos
-$nombre = $_POST['nombre'];
-$correo = $_POST['correo'];
-$telefono = $_POST['telefono'];
-$mensaje = $_POST['mensaje'];
+$nombre = $_GET['nombre'];
+$correo = $_GET['correo'];
+$telefono = $_GET['telefono'];
+$mensaje = $_GET['mensaje'];
 
 // Datos para el correo
-$destinatario = "codytron.info@gmail.com";
+$destinatario = "comiendaw@gmail.com";
 $asunto = "Contacto desde nuestra web";
 
 $carta = "De: $nombre \n";

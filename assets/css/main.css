@@ -2865,9 +2865,32 @@
 				background-color: #ecaa96;
 		transform: translate(2px, 2px); /* Movimiento del botón hacia la derecha y hacia abajo */
 		
-				 
-
+				
 			}
+
+		/* Esto hará, que cuando el usuario haga clic, el botón se vuelva de colores */
+
+			.button.primary:active {
+			animation: rainbow 1s linear infinite; /* Animación al hacer clic en el botón */
+		}
+
+	@keyframes rainbow {
+	0% {
+		background-color: #e89980;
+	}
+	25% {
+		background-color: #ecaa96;
+	}
+	50% {
+		background-color: #d7a6cd;
+	}
+	75% {
+		background-color: #95bfe9;
+	}
+	100% {
+		background-color: #e89980;
+	}
+}
 
 			input[type="submit"].primary:active,
 			input[type="reset"].primary:active,

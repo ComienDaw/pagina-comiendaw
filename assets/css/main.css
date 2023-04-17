@@ -2852,28 +2852,16 @@
 		input[type="button"].primary,
 		.button.primary {
 			
-			background-color: #4CAF50; /* Color de fondo */
-  border: none; /* Sin borde */
-  color: white; /* Color de texto */
-  padding: 15px 32px; /* Tamaño del botón */
-  text-align: center; /* Centrado de texto */
-  text-decoration: none; /* Sin subrayado de texto */
-  display: inline-block; /* Botón en línea */
-  font-size: 16px; /* Tamaño de fuente */
-  margin: 4px 2px; /* Margen entre botones */
-  cursor: pointer; /* Cursor de ratón */
-			
-			
-		/*	background-color: #e89980; 
-			color: #ffffff !important; */
+			background-color: #e89980; 
+			color: #ffffff !important;
 		}
 
 			input[type="submit"].primary:hover,
 			input[type="reset"].primary:hover,
 			input[type="button"].primary:hover,
 			.button.primary:hover {
-				/* background-color: #ecaa96; */
-				  background-color: #3e8e41; /* Color de fondo cuando se pasa el ratón por encima */
+				background-color: #ecaa96;
+				 
 
 			}
 

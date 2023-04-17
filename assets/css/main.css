@@ -2852,7 +2852,7 @@
 		input[type="button"].primary,
 		.button.primary {
 			
-			background-color: #e89980; 
+			background-color: #000000; 
 			color: #ffffff !important;
 		transition: transform 0.2s ease-in-out; /* Transición suave de la propiedad transform */
 

@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['submit'])) {
-    $to = "comiendaw@gmail.com"; // Cambia esta dirección de correo electrónico por la que desees recibir los mensajes
+    $to = "comiendaw@gmail.com"; // Destino para recibir los mensajes
     $subject = $_POST['subject'];
     $name = $_POST['name'];
     $email = $_POST['email'];

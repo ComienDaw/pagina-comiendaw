@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="Imagenes_Proyecto/|ImagenesProyecto/" kind="src" path="src"/>
+	<classpathentry kind="src" path="src/Imagenes_Proyecto"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/migue/OneDrive/Documentos/FP/PROGRAMACIÓN/CURSO JAVA PÍLDORAS/WindowsBuilder/ojdbc10.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/migue/OneDrive/Documentos/FP/PROGRAMACIÓN/CURSO JAVA PÍLDORAS/WindowsBuilder/jgoodies-forms-1.8.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

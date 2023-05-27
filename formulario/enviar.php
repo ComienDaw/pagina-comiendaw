@@ -1,19 +1,19 @@
 
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $to = 'comiendaw@gmail.com'; // Reemplaza esto con tu dirección de correo electrónico
-    $subject = 'Mensaje enviado desde formulario de contacto'; // Asunto del correo electrónico
+    $to = 'comiendaw@gmail.com'; // Nuestra dirección de correo electrónico
+    $subject = 'Mensaje enviado desde formulario de contacto'; // Asunto del correo
 
-    // Recopilación de los datos enviados por el formulario
+    // Datos del usuario
     $names = $_POST['nombre'];
     $phone = $_POST['telefono'];
     $email = $_POST['correo'];
     $mensaje = $_POST['mensaje'];
 
-    // Construcción del cuerpo del correo electrónico
+    // El cuerpo del mensaje
     $body = "Nombre: $nombre\nTeléfono: $phone\nCorreo electrónico: $email\nMensaje:\n$mensaje";
 
-    // Envío del correo electrónico
+    // Condiciones para enviar o no el correo
     if(mail($to, $subject, $body)) {
         header("mensaje-de-envio.html"); // Si se envía el correo electrónico correctamente, redirige al usuario a una página de agradecimiento
         exit;
